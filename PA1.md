@@ -6,7 +6,7 @@ I want to avoid code warnings e.g. for the version of a library being a bit old.
 
 
 ```r
-knitr::opts_chunk$set( echo = TRUE, results = "asis", warning=FALSE, message=FALSE)
+knitr::opts_chunk$set( echo = TRUE, results = "asis", warning=FALSE, message=FALSE, fig.width=6, fig.height=4, fig.path='Figs/')
 
 library(dplyr)
 library(lattice)
@@ -59,7 +59,7 @@ Make a histogram of the total number of steps taken each day
 hist(totalStepsPerDay$totalSteps)
 ```
 
-![](PA1_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![](Figs/unnamed-chunk-4-1.png)<!-- -->
 
 The default histogram is nor detailed enough; let's set the number of buckets, and point out the mean (magenta) and the median (cyan).
 
@@ -70,7 +70,7 @@ abline(v=mean(totalStepsPerDay$totalSteps), col="magenta", lwd=4)
 abline(v=median(totalStepsPerDay$totalSteps), col="cyan", lwd=4)
 ```
 
-![](PA1_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+![](Figs/unnamed-chunk-5-1.png)<!-- -->
 
 Calculate and report the mean and median of the total number of steps taken per day
 
@@ -97,7 +97,7 @@ avgStepsPerInterval <- data %>%
 plot(avgStepsPerInterval$interval, avgStepsPerInterval$avgSteps, type = "l")
 ```
 
-![](PA1_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+![](Figs/unnamed-chunk-7-1.png)<!-- -->
 
 Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -153,7 +153,7 @@ print(xtb, type="html")
 ```
 
 <!-- html table generated in R 3.2.2 by xtable 1.8-2 package -->
-<!-- Sun Sep 25 21:05:32 2016 -->
+<!-- Sun Sep 25 21:20:55 2016 -->
 <table border=1>
 <tr> <th>  </th> <th> V1 </th>  </tr>
   <tr> <td align="right"> 0 </td> <td align="right">  53 </td> </tr>
@@ -195,7 +195,7 @@ abline(v=mean(totalComputedStepsPerDay$totalSteps), col="magenta", lwd=4)
 abline(v=median(totalComputedStepsPerDay$totalSteps), col="cyan", lwd=4)
 ```
 
-![](PA1_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
+![](Figs/unnamed-chunk-13-1.png)<!-- -->
 
 
 ```r
@@ -220,7 +220,7 @@ print(xtbl, type="html")
 ```
 
 <!-- html table generated in R 3.2.2 by xtable 1.8-2 package -->
-<!-- Sun Sep 25 21:05:33 2016 -->
+<!-- Sun Sep 25 21:20:55 2016 -->
 <table border=1>
 <tr> <th>  </th> <th> V1 </th>  </tr>
   <tr> <td align="right"> weekday </td> <td align="right"> 12960 </td> </tr>
@@ -235,7 +235,7 @@ hist(subset(extendedData, typeOfDay="weekday")$steps, col="blue")
 hist(subset(extendedData, typeOfDay="weekend")$steps, col="green")
 ```
 
-![](PA1_files/figure-html/unnamed-chunk-16-1.png)<!-- -->
+![](Figs/unnamed-chunk-16-1.png)<!-- -->
 
 ```r
 par(mfrow=c(1, 1))
@@ -249,12 +249,12 @@ Let's compare the interval time-series.
 xyplot(steps ~ interval | typeOfDay, data = extendedData, layout=c(1, 2))
 ```
 
-![](PA1_files/figure-html/unnamed-chunk-17-1.png)<!-- -->
+![](Figs/unnamed-chunk-17-1.png)<!-- -->
 
 ```r
 qplot(interval, steps, data = extendedData, facets = typeOfDay ~ .)
 ```
 
-![](PA1_files/figure-html/unnamed-chunk-17-2.png)<!-- -->
+![](Figs/unnamed-chunk-17-2.png)<!-- -->
 
 The difference in activity patterns is pretty obvious, and easy to explain: during week-days, there are a significant number of steps starting after 5 am, with a peak at around 8:35 am. At the week-end, significant activity starts 2-3 hours later, and it peaks in the afternoon.

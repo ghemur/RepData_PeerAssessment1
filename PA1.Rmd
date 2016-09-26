@@ -10,7 +10,7 @@ output:
 I want to avoid code warnings e.g. for the version of a library being a bit old.
 
 ```{r setoptions, echo=TRUE, results="hide", warning=FALSE, message=FALSE}
-knitr::opts_chunk$set( echo = TRUE, results = "asis", warning=FALSE, message=FALSE)
+knitr::opts_chunk$set( echo = TRUE, results = "asis", warning=FALSE, message=FALSE, fig.width=6, fig.height=4, fig.path='Figs/')
 
 library(dplyr)
 library(lattice)
